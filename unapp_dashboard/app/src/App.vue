@@ -7,9 +7,6 @@
       <div v-else id="user_subscription_plan"> 
         <h1 id="user_subscription_plan_button">UnApp Basic</h1>
       </div>
-
-      
-
       <div id="user_info">
         <select id="select_language"><!-- languages -->
             <option value="eng">English</option>
