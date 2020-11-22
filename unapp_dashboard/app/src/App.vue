@@ -13,8 +13,7 @@
             <option value="rus">Russian</option>
             <option value="kaz">Kazakh</option>
         </select> 
-        <div id="user_button" @mouseover="hover = true"
-    @mouseleave="hover = false"> <!-- user -->
+        <div id="user_button"> <!-- user -->
           <img src="./assets/user.png" alt="">
         </div>
       </div>
@@ -41,8 +40,50 @@
         </div>
       </div>
     </div>
-    <div id="courses"> 
-      
+    <div id="courses_section"> 
+      <h1 id="popular_c">Popular Courses</h1>
+      <div id="all_courses">
+        <div id="course_block">
+          <div id="course_cover" class="course_cover_one">
+            <div id="unapppro_course"></div>
+          </div>
+          <h5>Applying to US Universities</h5><!-- название курса -->
+          <p>Yerkebulan Imanbaev</p><!-- ведущий курса -->
+          <h6>Language: Russian</h6>
+        </div>
+        <div id="course_block">
+          <div id="course_cover" class="course_cover_two">
+            <div id="unapppro_course"></div>
+          </div>
+          <h5>Как продать себя университету?</h5><!-- название курса -->
+          <p>Aidana Smat</p><!-- ведущий курса -->
+          <h6>Language: Russian</h6>
+        </div>
+        <div id="course_block">
+          <div id="course_cover" class="course_cover_three">
+            <div id="unapppro_course"></div>
+          </div>
+          <h5>Рекомендательные письма для чайников</h5><!-- название курса -->
+          <p>UnApp Team</p><!-- ведущий курса -->
+          <h6>Language: Russian</h6>
+        </div>
+        <div id="course_block">
+          <div id="course_cover" class="course_cover_four">
+            <div id="unapppro_course"></div>
+          </div>
+          <h5>Как поступить во Францию?</h5><!-- название курса -->
+          <p>Medina Sovetova</p><!-- ведущий курса -->
+          <h6>Language: Russian</h6>
+        </div>
+        <div id="course_block">
+          <div id="course_cover" class="course_cover_five">
+            <div id="unapppro_course"></div>
+          </div>
+          <h5>Поступление в университеты Южной Кореи</h5><!-- название курса -->
+          <p>Azhar Kamerdenova</p><!-- ведущий курса -->
+          <h6>Language: Russian</h6>
+        </div>
+      </div>
     </div>
 </div>
 </template>
@@ -53,6 +94,7 @@ export default {
   name: 'App',
   data(){
     return{
+      
       isElVisible: true, // если true то меняется на Unapp pro
       hover: false,
       user:{
@@ -61,12 +103,14 @@ export default {
         hasSubscription: false,
       }
     }
-    
   }
 }
 </script>
 
 <style>
+template{
+  background: #eaeaea;
+}
 header{
   widows: 100%;
   height: 60px;
@@ -133,9 +177,8 @@ position: relative;
   background: #fa5059;
   border-radius: 50%;
 }
-#user_button:hover + #dropdown_menu {
+#user_button:hover {
   cursor: pointer;
-  display: block;
 }
 #select_language{
   width: 100px;;
@@ -188,6 +231,8 @@ padding-left: 8px;;
   margin-bottom: 7px;
 } */
 
+/* main block */
+
 #main{
   width:100%;
   height: 450px;;
@@ -237,5 +282,75 @@ padding-left: 8px;;
 }
 #main_second_block img{
   width:95%;
+}
+
+
+/* courses */
+#courses_section{
+  width:100%;
+  height: 600px;
+  margin-top: 60px;
+}
+#popular_c{
+  width: 90%;
+  margin: 0 auto;
+}
+#all_courses{
+  position: relative;
+  top: -100px;
+  width:90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 330px;
+  grid-column-gap: 30px;
+   grid-row-gap: 3em;
+}
+#course_block{
+  /* width: 350px; */
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+  border-radius: 10px 10px 10px 10px;
+  
+}
+#course_block:hover{
+  transition: 0.5s;;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+#course_cover{
+  width: 100%;
+  height: 190px;
+  border-radius: 10px 10px 10px 10px;
+}
+.course_cover_one{
+  background: rgb(235, 97, 52);
+}
+.course_cover_two{
+  background: rgb(
+95, 217, 103
+);
+}
+.course_cover_three{
+  background: rgb(126, 199, 228);
+}
+.course_cover_four{
+  background: rgb(233, 135, 156);
+}
+.course_cover_five{
+  background: rgb(207, 121, 241);
+}
+#course_block h5 {
+  width: 98%;
+  padding-left: 15px;
+  padding-top: 5px;
+  font-size: 18px;;
+}
+#course_block p {
+  padding-left: 15px;
+  opacity: 0.8;
+  margin-top: -5px!important;
+}
+#course_block h6{
+  padding-left: 15px;
 }
 </style>
