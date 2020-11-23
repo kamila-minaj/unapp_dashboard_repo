@@ -13,12 +13,12 @@
             <option value="rus">Russian</option>
             <option value="kaz">Kazakh</option>
         </select> 
-        <div id="user_button"> <!-- user -->
+        <div id="user_button"  v-on:mouseover="active = !active"> <!-- user -->
           <img src="./assets/user.png" alt="">
         </div>
       </div>
     </header>
-    <div id="dropdown_menu" v-if="hover">
+    <div id="dropdown_menu" v-if="active">
             <div><img src="./assets/dropdown_menu_icons/user_drp.png" alt=""><a href="">Profile</a></div>
             <div><img src="./assets/dropdown_menu_icons/gear.png" alt=""><a href="">Settings</a></div>
             <div><img src="./assets/dropdown_menu_icons/feedback.png" alt=""><a href="">Leave a feedback</a></div>
@@ -85,6 +85,89 @@
         </div>
       </div>
     </div>
+    <div id="webinars">
+      <h1>Lastest Webinars</h1>
+      <div id="all_webinars">
+        <a id="webinar_block" href="#">
+          <div id="webinar_img">
+            <div id="webinar_record">
+              <p>Record</p>
+            </div>
+            <img src="./assets/logo.png" alt="">
+          </div>
+          <div id="webinar_text">
+            <span>10 August 2020 04:00</span>
+            <h4>Поступление в Японию && Теория изучения языков</h4>
+            <p>Madi Bazilbek</p>
+          </div>
+        </a>
+        <a id="webinar_block" href="#">
+          <div id="webinar_img">
+            <div id="webinar_record">
+              <p>Record</p>
+            </div>
+            <img src="./assets/logo.png" alt="">
+          </div>
+          <div id="webinar_text">
+            <span>11 August 2020 05:00</span>
+            <h4>What is successful application and which aspects...</h4>
+            <p>Yerkebulan Imanbaev</p>
+          </div>
+        </a>
+        <a id="webinar_block" href="#">
+          <div id="webinar_img">
+            <div id="webinar_record">
+              <p>Record</p>
+            </div>
+            <img src="./assets/logo.png" alt="">
+          </div>
+          <div id="webinar_text">
+            <span>12 August 2020 07:00</span>
+            <h4>Как поступить в Канаду и получить грант?</h4>
+            <p>Sayana Imash</p>
+          </div>
+        </a>
+        <a id="webinar_block" href="#">
+          <div id="webinar_img">
+            <div id="webinar_record">
+              <p>Record</p>
+            </div>
+            <img src="./assets/logo.png" alt="">
+          </div>
+          <div id="webinar_text">
+            <span>13 August 2020 01:00</span>
+            <h4>7 ошибок при поступлении в Американские универси...</h4>
+            <p>Elza Leglan</p>
+          </div>
+        </a> 
+        <a id="webinar_block" href="#">
+          <div id="webinar_img">
+            <div id="webinar_record">
+              <p>Record</p>
+            </div>
+            <img src="./assets/logo.png" alt="">
+          </div>
+          <div id="webinar_text">
+            <span>14 August 2020 04:00</span>
+            <h4>Стипендии на обучение в США</h4>
+            <p>Stanislava Klymova</p>
+          </div>
+        </a>
+        <a id="webinar_block" href="#">
+          <div id="webinar_img">
+            <div id="webinar_record">
+              <p>Record</p>
+            </div>
+            <img src="./assets/logo.png" alt="">
+          </div>
+          <div id="webinar_text">
+            <span>10 August 2020 04:00</span>
+            <h4>Всё, что вам нужно знать о Барнард (Columbia Univ...</h4>
+            <p>Anel Abdykarimova</p>
+          </div>
+        </a>
+      </div>
+    </div>
 </div>
 </template>
 
@@ -92,9 +175,11 @@
 
 export default {
   name: 'App',
+  el: 'header',
   data(){
+    
     return{
-      
+      active: false,
       isElVisible: true, // если true то меняется на Unapp pro
       hover: false,
       user:{
@@ -103,7 +188,12 @@ export default {
         hasSubscription: false,
       }
     }
-  }
+  },
+  methods: {
+      mouseOver: function(){
+            this.active = !this.active;  
+        }
+    }
 }
 </script>
 
@@ -112,7 +202,7 @@ template{
   background: #eaeaea;
 }
 header{
-  widows: 100%;
+  width: 100%;
   height: 60px;
   display: block;
 }
@@ -196,13 +286,12 @@ width:155px;
 height: 190px;;
 color: black;
   border-radius: 5px 5px 5px 5px;
-  position:absolute;
+  
   background:#fff;
   float: right!important;
-  box-shadow: 0px 0px 10px ;
-  font-size: 14px;;
-  display: none;
-  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+  font-size: 14px;
+  z-index: 4!important;
 }
 #dropdown_menu div {
   padding-top: 6px;
@@ -218,8 +307,8 @@ padding-left: 8px;;
   top: -2px;;
 }
 #dropdown_menu div:hover{
-  background:#c99691;
-  transition: 0.2s;
+  background:rgb(245, 224, 223);
+  transition: 0.5s;
   cursor: pointer;
 }
 /* #dropdown_menu_divider{
@@ -236,7 +325,7 @@ padding-left: 8px;;
 #main{
   width:100%;
   height: 450px;;
-  margin-top: 20px;;
+  margin-top: 20px;
 }
 #cont{
   width: 90%;
@@ -279,16 +368,18 @@ padding-left: 8px;;
   position: relative;
   top: -300px;; 
   left: 35px;;
+  z-index: 1!important;
 }
 #main_second_block img{
   width:95%;
+  z-index: 1!important;
 }
 
 
 /* courses */
 #courses_section{
   width:100%;
-  height: 600px;
+  height: 930px;
   margin-top: 60px;
 }
 #popular_c{
@@ -310,7 +401,6 @@ padding-left: 8px;;
   /* width: 350px; */
       box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
   border-radius: 10px 10px 10px 10px;
-  
 }
 #course_block:hover{
   transition: 0.5s;;
@@ -352,5 +442,115 @@ padding-left: 8px;;
 }
 #course_block h6{
   padding-left: 15px;
+}
+
+/* lastest webinars */
+#webinars{
+  width:100%;
+  height: 580px;;
+}
+#webinars a {
+  text-decoration: none!important;
+  color: #000;
+}
+#webinars a:hover{
+  text-decoration: none;
+}
+#webinars h1 {
+   width: 90%;
+  margin: 0 auto;
+}
+#all_webinars{
+  text-decoration: none;
+  width:90%;
+  padding-top: 50px;;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 160px;
+  grid-column-gap: 30px;
+  grid-row-gap: 3em;
+  
+}
+#webinar_block{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+  background: #fff;
+  width: 90%;
+  height: 160px;;
+  border-radius: 10px 10px 10px 10px;
+  display: flex;
+}
+#webinar_block:hover{
+  transition: 0.5s;;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+#webinar_img{
+  width:40%;
+  height: 100%;;
+  background:  rgb(62, 33, 121) ;
+  border-radius: 10px 10px 10px 10px;
+}
+#webinar_img img {
+  width:45px;;
+  height: 45px;;
+  display: block;
+  margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#webinar_record {
+  width: 70px;
+  height: 30px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  text-align: center;
+  border-radius: 5px 5px 5px 5px;
+  background: #ffe0c3;
+  color: #f37500;
+}
+#webinar_text{
+  width: 55%;
+  padding-left: 15px;
+  padding-top: 7px;;
+}
+#webinar_text span{
+  color: red;
+  font-size: 15px;;
+}
+#webinar_text h4 {
+  font-size: 18px;;
+  font-weight: 650;
+}
+#webinar_text p {
+  font-size: 15px;;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 710px) {
+  #webinars{
+    margin-top: 350px;;
+  }
+  #all_webinars{
+    grid-template-columns: repeat(1, 1fr);
+    
+  }
+  #all_courses{
+    grid-template-columns: repeat(2, 1fr);
+    top: 100px;;
+  }
+  #webinar_text span{
+font-size: 13px;
+  }
+  #main_heading h1{
+    font-size: 25px;
+  }
+  #main_second_block{
+    display: none;
+  }
+  #main_heading p {
+    font-size: 19px;;
+  }
 }
 </style>
